@@ -175,7 +175,104 @@ function main() {
     SLL.insertAt('Kat', 3);
     SLL.remove('Tauhida');
 
-    console.log(util.inspect(SLL, false, null));
+    let temp = new LinkedList();
+    
+    // console.log(display(SLL));
+    // console.log(size(SLL));
+    // console.log(isEmpty(temp));
+    // console.log(findPrevious(SLL, 'Kat'));
+    // console.log(findLast(SLL));
+    console.log(reverse(SLL));
 }
 
 main();
+
+
+function display(list) {
+    //iterate through the list
+    //add each list element to an array
+    //return our array
+    let current = list.head;
+    
+    while (current.next !== null) {
+        console.log(current);
+        current = current.next;
+    }
+}
+
+function size(list) {
+    let counter = 1;
+    let current = list.head;
+    
+    while (current.next !== null) {
+        counter++;
+        current = current.next;
+    }
+    return counter;
+}
+
+function isEmpty(list) {
+    if (list.head === null) {
+        return true;
+    } else return false;
+}
+
+function findPrevious(list, value) {
+    let current = list.head; //0
+    let prev = list.head; //0
+
+    if (current.next === null) {
+        return current;
+    }
+    
+    while (current.value !== value && current.next !== null) {
+        prev = current;
+        current = current.next;
+    }
+
+    return prev;
+}
+
+function findLast(list) {
+    let current = list.head;
+    let prev = list.head;
+
+    if (current.next === null) {
+        return current;
+    }
+
+    while (current.next !== null) {
+        prev = current;
+        current = current.next;
+    }
+
+    return current;
+}
+
+function WhatDoesThisProgramDo(lst){
+
+    let current = lst.head; //current = value: 1, next: 2
+
+    while(current !== null){ 
+        
+        let newNode = current; // newnode = value: 1, next: 2
+
+        while (newNode.next !== null) {
+            if (newNode.next.value === current.value) { // does 2 equal 1
+                newNode.next = newNode.next.next; // 2 is equal to 3
+            }
+            else{
+                newNode = newNode.next; // 1 becomes 2
+            }
+        }
+        current = current.next; // 1 = 2
+    }
+}
+
+// this program runs through the linked list and sets each node to the same value as the node before it
+// O(n^2)
+
+function reverse(list) {
+    
+}
+
